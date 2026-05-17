@@ -20,6 +20,13 @@ function Update() {
       fileReader.onload = (event) => {
         const fileData = event.target.result;
         const workbook = XLSX.read(fileData, { type: "binary" });
+        console.log(workbook)
+
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        const range = XLSX.utils.decode_range(worksheet["!ref"]);
+        const rows = range.e.r;
+        console.log(rows)
+        console.log(range)
       };
     }
   }
