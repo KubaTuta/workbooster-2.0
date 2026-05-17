@@ -35,17 +35,22 @@ function Update() {
             const vin = cellB ? cellB.v : undefined;
 
             const finalDataObject = {
-                id: i+1,
-                plate,
-                vin
-            }
+              id: i + 1,
+              plate,
+              vin,
+            };
             resultArray.push(finalDataObject);
-            console.log(resultArray)
         }
-        }
-      };
     }
-  }
+    setData((prevData) => {
+        const dataArray = [...prevData];
+        dataArray[0] = resultArray;
+        return dataArray;
+    });
+};
+}
+}
+console.log(data);
 
   return (
     <div>
