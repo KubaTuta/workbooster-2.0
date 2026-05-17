@@ -1,4 +1,5 @@
 import { useState } from "react";
+var XLSX = require("xlsx");
 
 function Update() {
   const [file, setFile] = useState([null]);
@@ -16,6 +17,10 @@ function Update() {
     if (file[0]) {
       const fileReader = new FileReader();
       fileReader.readAsBinaryString(file[0]);
+      fileReader.onload = (event) => {
+        const fileData = event.target.result;
+        const workbook = XLSX.read(fileData, { type: "binary" });
+      };
     }
   }
 
