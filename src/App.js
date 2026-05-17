@@ -1,18 +1,27 @@
+import B2C from "./features/B2C";
+import Update from "./features/Update";
 import { Bar, LinkDiv, StyledNavLink } from "./styles";
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
+
+
   return (
     <>
       <Bar>
         <LinkDiv>
-          <StyledNavLink>Main</StyledNavLink>
+          <StyledNavLink to="/main">
+            Main
+          </StyledNavLink>
         </LinkDiv>
         <LinkDiv>
-          <StyledNavLink>Upload</StyledNavLink>
+          <StyledNavLink to="update">Update</StyledNavLink>
         </LinkDiv>
       </Bar>
-      <Routes></Routes>
+      <Routes>
+        <Route path="*" element={<B2C />}></Route>
+        <Route path="/update" element={<Update />}></Route>
+      </Routes>
     </>
   );
 }
