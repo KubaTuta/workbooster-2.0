@@ -20,13 +20,13 @@ function Update() {
       fileReader.onload = (event) => {
         const fileData = event.target.result;
         const workbook = XLSX.read(fileData, { type: "binary" });
-        console.log(workbook);
 
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const range = XLSX.utils.decode_range(worksheet["!ref"]);
         const rows = range.e.r;
+        const resultArray = [];
 
-        for (let i = 1; i <= rows; i++) {
+        for (let i = 0; i <= rows; i++) {
           const cellA = worksheet[XLSX.utils.encode_cell({ r: i, c: 0 })];
           const cellB = worksheet[XLSX.utils.encode_cell({ r: i, c: 1 })];
 
@@ -35,11 +35,13 @@ function Update() {
             const vin = cellB ? cellB.v : undefined;
 
             const finalDataObject = {
-                id: i,
+                id: i+1,
                 plate,
                 vin
             }
-          }
+            resultArray.push(finalDataObject);
+            console.log(resultArray)
+        }
         }
       };
     }
