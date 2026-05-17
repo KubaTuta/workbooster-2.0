@@ -13,7 +13,9 @@ function Update() {
   }
 
   function handleConvertRecords() {
-    
+    if (file[0]) {
+      
+    }
   }
 
   return (
@@ -21,9 +23,7 @@ function Update() {
       <form>
         <input type="file" onChange={(event) => handleInput(event, 0)} />
         {file[0] && data[0] === null ? (
-          <button onClick={()=>handleConvertRecords()}>
-            Konwertuj
-          </button>
+          <button onClick={() => handleConvertRecords()}>Konwertuj</button>
         ) : (
           ""
         )}
