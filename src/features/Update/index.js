@@ -14,7 +14,8 @@ function Update() {
 
   function handleConvertRecords() {
     if (file[0]) {
-      
+      const fileReader = new FileReader();
+      fileReader.readAsBinaryString(file[0]);
     }
   }
 
