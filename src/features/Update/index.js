@@ -25,8 +25,11 @@ function Update() {
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const range = XLSX.utils.decode_range(worksheet["!ref"]);
         const rows = range.e.r;
-        console.log(rows)
-        console.log(range)
+        
+        for (let i=1; i <= rows; i++) {
+            const cellA = worksheet[XLSX.utils.encode_cell({ r: i, c: 0 })];
+            const cellB = worksheet[XLSX.utils.encode_cell({ r: i, c: 1 })];
+        }
       };
     }
   }
