@@ -40,24 +40,27 @@ function Update() {
               vin,
             };
             resultArray.push(finalDataObject);
+          }
         }
+        
+        localStorage.setItem("ekspertyzy", JSON.stringify(resultArray))
+        alert("Zapisano")
+
+        setData((prevData) => {
+          const dataArray = [...prevData];
+          dataArray[0] = resultArray;
+          return dataArray;
+        });
+      };
     }
-    setData((prevData) => {
-        const dataArray = [...prevData];
-        dataArray[0] = resultArray;
-        return dataArray;
-    });
-};
-}
-}
-console.log(data);
+  }
 
   return (
     <div>
       <form>
         <input type="file" onChange={(event) => handleInput(event, 0)} />
         {file[0] && data[0] === null ? (
-          <button onClick={() => handleConvertRecords()}>Konwertuj</button>
+          <button onClick={() => handleConvertRecords()}>Zapisz</button>
         ) : (
           ""
         )}
