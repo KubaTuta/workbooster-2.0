@@ -3,7 +3,6 @@ var XLSX = require("xlsx");
 
 function Update() {
   const [file, setFile] = useState([null]);
-  const [data, setData] = useState([null]);
 
   function handleInput(event, number) {
     setFile((prevFile) => {
@@ -42,15 +41,9 @@ function Update() {
             resultArray.push(finalDataObject);
           }
         }
-        
-        localStorage.setItem("ekspertyzy", JSON.stringify(resultArray))
-        alert("Zapisano")
 
-        setData((prevData) => {
-          const dataArray = [...prevData];
-          dataArray[0] = resultArray;
-          return dataArray;
-        });
+        localStorage.setItem("ekspertyzy", JSON.stringify(resultArray));
+        alert("Zapisano");
       };
     }
   }
@@ -59,11 +52,13 @@ function Update() {
     <div>
       <form>
         <input type="file" onChange={(event) => handleInput(event, 0)} />
-        {file[0] && data[0] === null ? (
+        {file[0] !== null ? (
           <button onClick={() => handleConvertRecords()}>Zapisz</button>
+          
         ) : (
           ""
         )}
+        {console.log(file)}
       </form>
     </div>
   );
