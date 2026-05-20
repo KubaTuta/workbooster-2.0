@@ -68,25 +68,21 @@ function Update() {
         const resultArray = [];
 
         for (let i = 0; i <= rows; i++) {
-          const cellA = worksheet[XLSX.utils.encode_cell({ r: i, c: 0 })];
-          const cellB = worksheet[XLSX.utils.encode_cell({ r: i, c: 1 })];
-          const cellC = worksheet[XLSX.utils.encode_cell({ r: i, c: 2 })];
+          const singleCar = {
+            id: i + 1,
+          };
 
-          if (cellA) {
-            const plate = cellA.v;
-            const vin = cellB ? cellB.v : undefined;
-            const status = cellC ? cellC.v : undefined;
+          Object.entries(columnPosition).forEach(([carProperty, column]) => {
+            const cell = worksheet[XLSX.utils.encode_cell({ r: i, c: column })];
+            singleCar[carProperty] = cell ? cell.v : undefined;
+          });
 
-            const finalDataObject = {
-              id: i + 1,
-              plate,
-              vin,
-            };
-            resultArray.push(finalDataObject);
+          if (singleCar.plate) {
+            resultArray.push(singleCar)
           }
         }
 
-        localStorage.setItem("ekspertyzy", JSON.stringify(resultArray));
+        localStorage.setItem("ewidencja", JSON.stringify(resultArray));
         alert("Zapisano");
       };
     }
