@@ -75,6 +75,10 @@ function Update() {
     });
   }
 
+  function excelDateToISO(excelDate) {
+    return (new Date((excelDate - 25569) * 86400 * 1000)).toISOString()
+  }
+
   function handleConvertRecords() {
     if (file[0]) {
       const fileReader = new FileReader();
