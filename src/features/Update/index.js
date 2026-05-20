@@ -99,7 +99,15 @@ function Update() {
 
           Object.entries(columnPosition).forEach(([carProperty, config]) => {
             const cell = worksheet[XLSX.utils.encode_cell({ r: i, c: config.column })];
-            singleCar[carProperty] = cell ? cell.v : undefined;
+
+            let cellValue = cell ? cell.v : undefined;
+
+            if (config.isDate && cellValue) {
+              cellValue = excelDateToISO(cellValue)
+            }
+
+            singleCar[carProperty] = cellValue;
+
           });
 
           if (singleCar.plate) {
