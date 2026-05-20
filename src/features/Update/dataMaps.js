@@ -60,3 +60,11 @@ export const ewiMap = {
     priceAcceptance: { column: 51 },
     location: { column: 60 },
   };
+
+  export const macadamMap = {
+    macadamData: {column: 2, isDate: true},
+    plate: { column: 3 },
+    macadamNoPrice: {column: 11},
+    macadamWithPrice: {column: 12},
+    macadamMileage: {column: 14},
+  }
