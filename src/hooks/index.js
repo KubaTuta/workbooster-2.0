@@ -9,7 +9,18 @@ export function excelDateToISO(excelDate) {
   return new Date((excelDate - 25569) * 86400 * 1000).toISOString();
 }
 
-export function handleConvertRecords(slotNumber, mapObject, storageStringName, file) {
+export function handleConvertRecords(
+  slotNumber,
+  mapObject,
+  storageStringName,
+  file,
+) {
+  const indexedDataBase = new Dexie("CarsDatabase");
+
+  indexedDataBase.version(1).stores({
+    [storageStringName]: "++id, plate, vin",
+  });
+
   if (file[slotNumber]) {
     const fileReader = new FileReader();
     fileReader.readAsBinaryString(file[slotNumber]);
