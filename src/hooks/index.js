@@ -2,7 +2,7 @@ import Dexie from "dexie";
 var XLSX = require("xlsx");
 
 export function excelDateToISO(excelDate) {
-  if(typeof excelDate === "string") {
+  if (typeof excelDate === "string") {
     return excelDate;
   }
 
@@ -24,7 +24,7 @@ export function handleConvertRecords(
   if (file[slotNumber]) {
     const fileReader = new FileReader();
     fileReader.readAsBinaryString(file[slotNumber]);
-    fileReader.onload = (event) => {
+    fileReader.onload = async (event) => {
       const fileData = event.target.result;
       const workbook = XLSX.read(fileData, { type: "binary" });
 
@@ -56,7 +56,8 @@ export function handleConvertRecords(
         }
       }
 
-      localStorage.setItem(storageStringName, JSON.stringify(resultArray));
+      await indexedDataBase.table(storageStringName).bulkPut(resultArray);
+
       alert(`Zapisano dane w ${storageStringName}`);
     };
   }
