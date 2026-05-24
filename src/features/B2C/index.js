@@ -5,6 +5,7 @@ import { Layout, Tile } from "./styled";
 function B2C() {
   const [ewiCars, setEwiCars] = useState([]);
   const [macadamCars, setMacadamCars] = useState(new Map());
+  const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
 
   useEffect(() => {
     async function loadData() {
