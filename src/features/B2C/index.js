@@ -26,37 +26,33 @@ function B2C() {
     loadData();
   }, []);
 
-  console.log(cars[0]);
-  console.log(macadamCars)
-  // console.log(data[0])
-
-  // const renderedData = parsedEwi
-  //   .filter((singleVehicle) => macadamMap.has(singleVehicle.plate))
-  //   .map((singleVehicle) => {
-  //     const macadamVehicle = macadamMap.get(singleVehicle.plate);
-  //     return {
-  //       plate: singleVehicle.plate,
-  //       vin: singleVehicle.vin,
-  //       company: singleVehicle.company,
-  //       collectionDate: singleVehicle.collectionDate,
-  //       brand: singleVehicle.brand,
-  //       body: singleVehicle.body,
-  //       version: singleVehicle.version,
-  //       fuel: singleVehicle.fuel,
-  //       color: singleVehicle.color,
-  //       mileage: singleVehicle.mileage,
-  //       prodYear: singleVehicle.prodYear,
-  //       firstRegNb: singleVehicle.firstRegNb,
-  //       damage: singleVehicle.damage,
-  //       comment: singleVehicle.comment,
-  //       eurotax: singleVehicle.eurotax,
-  //       eurotaxDate: singleVehicle.eurotaxDate,
-  //       reservation: singleVehicle.reservation,
-  //       rvStat: singleVehicle.rvStat,
-  //       refurbishment: singleVehicle.refurbishment,
-  //       link: macadamVehicle.macadamWithPrice,
-  //     };
-  //   });
+  const renderedData = ewiCars
+    .filter((ewiCar) => macadamCars.has(ewiCar.plate))
+    .map((ewiCar) => {
+      const macadamCar = macadamCars.get(ewiCar.plate);
+      return {
+        plate: ewiCar.plate,
+        vin: ewiCar.vin,
+        company: ewiCar.company,
+        collectionDate: ewiCar.collectionDate,
+        brand: ewiCar.brand,
+        body: ewiCar.body,
+        version: ewiCar.version,
+        fuel: ewiCar.fuel,
+        color: ewiCar.color,
+        mileage: ewiCar.mileage,
+        prodYear: ewiCar.prodYear,
+        firstRegNb: ewiCar.firstRegNb,
+        damage: ewiCar.damage,
+        comment: ewiCar.comment,
+        eurotax: ewiCar.eurotax,
+        eurotaxDate: ewiCar.eurotaxDate,
+        reservation: ewiCar.reservation,
+        rvStat: ewiCar.rvStat,
+        refurbishment: ewiCar.refurbishment,
+        macadamWithPrice: macadamCar.macadamWithPrice,
+      };
+    });
 
   return (
     // <Layout>
