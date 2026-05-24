@@ -10,6 +10,7 @@ export function excelDateToISO(excelDate) {
 }
 
 export function handleConvertRecords(
+  event,
   slotNumber,
   mapObject,
   storageStringName,
@@ -18,8 +19,8 @@ export function handleConvertRecords(
   if (file[slotNumber]) {
     const fileReader = new FileReader();
     fileReader.readAsBinaryString(file[slotNumber]);
-    fileReader.onload = async (event) => {
-      const fileData = event.target.result;
+    fileReader.onload = async (e) => {
+      const fileData = e.target.result;
       const workbook = XLSX.read(fileData, { type: "binary" });
 
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
