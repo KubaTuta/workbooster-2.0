@@ -55,8 +55,15 @@ function B2C() {
     });
 
   return (
-    // <Layout>
-    888
+    <Layout>
+      <>
+        {renderedData.map((car, index) => {
+          return Object.entries(car).map(([key, value]) => (
+            <Tile key={key}>{value}</Tile>
+          ));
+        })}
+      </>
+    </Layout>
   );
 }
 export default B2C;
