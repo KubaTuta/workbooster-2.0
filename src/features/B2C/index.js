@@ -54,12 +54,26 @@ function B2C() {
       };
     });
 
+  function openTooltip(e, value) {
+    setHovered({
+      value,
+      x: e.clientX,
+      y: e.clientY,
+    });
+  }
+
   return (
     <Layout>
       <>
         {renderedData.map((car, index) => {
           return Object.entries(car).map(([key, value]) => (
-            <Tile key={key}>{value}</Tile>
+            <Tile
+              key={key}
+              onMouseEnter={(e) => openTooltip(e, value)}
+              onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
+            >
+              {value}
+            </Tile>
           ));
         })}
       </>
