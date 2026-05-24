@@ -1,4 +1,4 @@
-import Dexie from "dexie";
+import { db } from "./db";
 var XLSX = require("xlsx");
 
 export function excelDateToISO(excelDate) {
@@ -15,12 +15,6 @@ export function handleConvertRecords(
   storageStringName,
   file,
 ) {
-  const indexedDataBase = new Dexie("CarsDatabase");
-
-  indexedDataBase.version(1).stores({
-    [storageStringName]: "++id, plate, vin",
-  });
-
   if (file[slotNumber]) {
     const fileReader = new FileReader();
     fileReader.readAsBinaryString(file[slotNumber]);
@@ -34,9 +28,7 @@ export function handleConvertRecords(
       const resultArray = [];
 
       for (let i = 0; i <= rows; i++) {
-        const singleCar = {
-          id: i + 1,
-        };
+        const singleCar = {};
 
         Object.entries(mapObject).forEach(([carProperty, config]) => {
           const cell =
@@ -56,7 +48,7 @@ export function handleConvertRecords(
         }
       }
 
-      await indexedDataBase.table(storageStringName).bulkPut(resultArray);
+      await db.table(storageStringName).bulkPut(resultArray);
 
       alert(`Zapisano dane w ${storageStringName}`);
     };
