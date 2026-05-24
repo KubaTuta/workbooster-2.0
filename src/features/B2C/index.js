@@ -1,25 +1,27 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
 import { Layout, Tile } from "./styled";
 
 function B2C() {
   // const macadamMap = new Map(parsedMacadam.map((item) => [item.plate, item]));
-  const [cars, setCars] = useState([]);
+  const [ewiCars, setEwiCars] = useState([]);
   const [macadamCars, setMacadamCars] = useState(new Map());
 
   useEffect(() => {
     async function loadData() {
       const data = await downloadData("Ewidencja");
 
-      setCars(data);
+      setEwiCars(data);
     }
     loadData();
   }, []);
+
   useEffect(() => {
     async function loadData() {
       const data = await downloadData("Ekspertyzy");
 
-      setMacadamCars(data);
+      const dataMap = new Map(data.map((car) => [car.plate, car]));
+      setMacadamCars(dataMap);
     }
     loadData();
   }, []);
