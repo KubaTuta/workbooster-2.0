@@ -3,7 +3,6 @@ import { downloadData } from "../../hooks/db";
 import { Layout, Tile } from "./styled";
 
 function B2C() {
-  // const macadamMap = new Map(parsedMacadam.map((item) => [item.plate, item]));
   const [ewiCars, setEwiCars] = useState([]);
   const [macadamCars, setMacadamCars] = useState(new Map());
 

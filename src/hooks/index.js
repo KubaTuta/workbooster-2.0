@@ -48,7 +48,7 @@ export function handleConvertRecords(
           resultArray.push(singleCar);
         }
       }
-
+      await db.table(storageStringName).clear();
       await db.table(storageStringName).bulkPut(resultArray);
 
       alert(`Zapisano dane w ${storageStringName}`);
