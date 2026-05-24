@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
-import { Layout, Tile } from "./styled";
+import { Layout, Tile, Tooltip } from "./styled";
 
 function B2C() {
   const [ewiCars, setEwiCars] = useState([]);
@@ -76,6 +76,13 @@ function B2C() {
             </Tile>
           ));
         })}
+      </>
+      <>
+        {hovered.value !== (null || undefined) && (
+          <Tooltip x={hovered.x} y={hovered.y}>
+            {hovered.value}
+          </Tooltip>
+        )}
       </>
     </Layout>
   );
