@@ -5,6 +5,7 @@ import { Layout, Tile } from "./styled";
 function B2C() {
   // const macadamMap = new Map(parsedMacadam.map((item) => [item.plate, item]));
   const [cars, setCars] = useState([]);
+  const [macadamCars, setMacadamCars] = useState(new Map());
 
   useEffect(() => {
     async function loadData() {
@@ -14,8 +15,17 @@ function B2C() {
     }
     loadData();
   }, []);
+  useEffect(() => {
+    async function loadData() {
+      const data = await downloadData("Ekspertyzy");
+
+      setMacadamCars(data);
+    }
+    loadData();
+  }, []);
 
   console.log(cars[0]);
+  console.log(macadamCars)
   // console.log(data[0])
 
   // const renderedData = parsedEwi
