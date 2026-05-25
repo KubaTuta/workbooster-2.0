@@ -67,15 +67,34 @@ function B2C() {
     <Layout>
       <>
         {renderedData.map((car, index) => {
-          return Object.entries(car).map(([key, value]) => (
-            <Tile
-              key={key}
-              onMouseEnter={(e) => openTooltip(e, value)}
-              onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
-            >
-              {value}
-            </Tile>
-          ));
+          return Object.entries(car).map(([key, value]) => {
+            if (ewiMap[key]?.isDate) {
+              const formattedDate = new Date(value).toLocaleDateString("pl-PL");
+              return (
+                <Tile
+                  key={key}
+                  onMouseEnter={(e) =>
+                    openTooltip(
+                      e,
+                      formattedDate === "Invalid Date" ? value : formattedDate,
+                    )
+                  }
+                  onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
+                >
+                  {formattedDate === "Invalid Date" ? value : formattedDate}
+                </Tile>
+              );
+            } else
+              return (
+                <Tile
+                  key={key}
+                  onMouseEnter={(e) => openTooltip(e, value)}
+                  onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
+                >
+                  {value}
+                </Tile>
+              );
+          });
         })}
       </>
       <>
