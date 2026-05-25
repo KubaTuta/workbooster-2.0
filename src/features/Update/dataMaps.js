@@ -55,7 +55,7 @@ export const ewiMap = {
       column: 40,
       isDate: true,
     },
-    refurbrishment: { column: 45 },
+    refurbishment: { column: 45 },
     b2cPrice: { column: 47 },
     priceAcceptance: { column: 51 },
     location: { column: 60 },

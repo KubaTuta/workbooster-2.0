@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
 import { Layout, Tile, Tooltip } from "./styled";
+import { ewiMap } from "../Update/dataMaps";
 
 function B2C() {
   const [ewiCars, setEwiCars] = useState([]);
