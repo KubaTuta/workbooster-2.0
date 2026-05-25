@@ -9,7 +9,8 @@ export const Layout = styled.div`
 `;
 
 export const Tile = styled.div`
-  background-color: #076f4b;
+  background-color: #14513c;
+  font-size: 15px;
   color: white;
   border-radius: 5px;
   align-items: center;
