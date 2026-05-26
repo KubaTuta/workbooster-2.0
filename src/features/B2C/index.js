@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
-import { Layout, Tile, Tooltip } from "./styled";
+import { Layout, Tile, Tooltip, Button } from "./styled";
 import { commonMap } from "../Update/dataMaps";
 
 function B2C() {
@@ -62,6 +62,10 @@ function B2C() {
     });
   }
 
+  function openHyperlink(address) {
+    window.open(address, "_blank");
+  }
+
   return (
     <Layout>
       <>
@@ -69,7 +73,8 @@ function B2C() {
           return Object.entries(car).map(([key, value]) => {
             if (commonMap[key]?.isDate) {
               const formattedDate = new Date(value).toLocaleDateString("pl-PL");
-              const displayedDate = formattedDate === "Invalid Date" ? value : formattedDate;
+              const displayedDate =
+                formattedDate === "Invalid Date" ? value : formattedDate;
               return (
                 <Tile
                   key={key}
@@ -78,6 +83,13 @@ function B2C() {
                 >
                   {displayedDate}
                 </Tile>
+              );
+            }
+            if (commonMap[key]?.isHyperlink) {
+              return (
+                <Button key={key} onClick={(e) => openHyperlink(value)}>
+                  EKSPERTYZA
+                </Button>
               );
             } else
               return (

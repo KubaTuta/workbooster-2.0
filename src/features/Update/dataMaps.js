@@ -71,9 +71,9 @@ export const ewiMap = {
 
   export const macadamMap = {
     // macadamData: {column: 2, isDate: true},
-    plate: { column: 0 },
+    plate: { column: 4 },
     // macadamNoPrice: {column: 11},
-    macadamWithPrice: {column: 1, isHyperlink: true},
+    macadamWithPrice: {column: 13, isHyperlink: true},
     // macadamMileage: {column: 14},
   }
 

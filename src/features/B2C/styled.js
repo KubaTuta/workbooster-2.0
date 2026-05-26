@@ -37,3 +37,19 @@ export const Tooltip = styled.div`
   padding: 5px;
   border-radius: 10px;
 `;
+
+export const Button = styled.button`
+  background-color: #14513c;
+  cursor: pointer;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  align-items: center;
+  padding: 2px;
+  max-width: 100px;
+  min-width: 0px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
