@@ -61,10 +61,23 @@ export const ewiMap = {
     location: { column: 60 },
   };
 
+  // export const macadamMap = {
+  //   macadamData: {column: 2, isDate: true},
+  //   plate: { column: 3 },
+  //   macadamNoPrice: {column: 11},
+  //   macadamWithPrice: {column: 12},
+  //   macadamMileage: {column: 14},
+  // }
+
   export const macadamMap = {
-    macadamData: {column: 2, isDate: true},
-    plate: { column: 3 },
-    macadamNoPrice: {column: 11},
-    macadamWithPrice: {column: 12},
-    macadamMileage: {column: 14},
+    // macadamData: {column: 2, isDate: true},
+    plate: { column: 0 },
+    // macadamNoPrice: {column: 11},
+    macadamWithPrice: {column: 1, isHyperlink: true},
+    // macadamMileage: {column: 14},
+  }
+
+  export const commonMap = {
+    ...ewiMap,
+    ...macadamMap,
   }

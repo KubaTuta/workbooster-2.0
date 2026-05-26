@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
 import { Layout, Tile, Tooltip } from "./styled";
-import { ewiMap } from "../Update/dataMaps";
+import { commonMap } from "../Update/dataMaps";
 
 function B2C() {
   const [ewiCars, setEwiCars] = useState(new Map());
@@ -21,7 +21,6 @@ function B2C() {
     async function loadData() {
       const data = await downloadData("Ekspertyzy");
 
-      // const dataMap = new Map(data.map((car) => [car.plate, car]));
       setMacadamCars(data);
     }
     loadData();
@@ -68,7 +67,7 @@ function B2C() {
       <>
         {renderedData.map((car, index) => {
           return Object.entries(car).map(([key, value]) => {
-            if (ewiMap[key]?.isDate) {
+            if (commonMap[key]?.isDate) {
               const formattedDate = new Date(value).toLocaleDateString("pl-PL");
               const displayedDate = formattedDate === "Invalid Date" ? value : formattedDate;
               return (
