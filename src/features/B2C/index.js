@@ -4,15 +4,15 @@ import { Layout, Tile, Tooltip } from "./styled";
 import { ewiMap } from "../Update/dataMaps";
 
 function B2C() {
-  const [ewiCars, setEwiCars] = useState([]);
-  const [macadamCars, setMacadamCars] = useState(new Map());
+  const [ewiCars, setEwiCars] = useState(new Map());
+  const [macadamCars, setMacadamCars] = useState([]);
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
 
   useEffect(() => {
     async function loadData() {
       const data = await downloadData("Ewidencja");
-
-      setEwiCars(data);
+      const dataMap = new Map(data.map((car) => [car.plate, car]));
+      setEwiCars(dataMap);
     }
     loadData();
   }, []);
@@ -21,16 +21,16 @@ function B2C() {
     async function loadData() {
       const data = await downloadData("Ekspertyzy");
 
-      const dataMap = new Map(data.map((car) => [car.plate, car]));
-      setMacadamCars(dataMap);
+      // const dataMap = new Map(data.map((car) => [car.plate, car]));
+      setMacadamCars(data);
     }
     loadData();
   }, []);
 
-  const renderedData = ewiCars
-    .filter((ewiCar) => macadamCars.has(ewiCar.plate))
-    .map((ewiCar) => {
-      const macadamCar = macadamCars.get(ewiCar.plate);
+  const renderedData = macadamCars
+    .filter((macadamCar) => ewiCars.has(macadamCar.plate))
+    .map((macadamCar) => {
+      const ewiCar = ewiCars.get(macadamCar.plate);
       return {
         plate: ewiCar.plate,
         vin: ewiCar.vin,
