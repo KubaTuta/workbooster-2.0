@@ -39,6 +39,8 @@ export function handleConvertRecords(
 
           if (cellValue && config.isDate) {
             cellValue = excelDateToISO(cellValue);
+          } else if (typeof cellValue === "number") {
+            cellValue = cellValue.toFixed(0);
           }
 
           singleCar[carProperty] = cellValue;
