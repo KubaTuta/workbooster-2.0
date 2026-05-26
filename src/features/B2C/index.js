@@ -70,18 +70,14 @@ function B2C() {
           return Object.entries(car).map(([key, value]) => {
             if (ewiMap[key]?.isDate) {
               const formattedDate = new Date(value).toLocaleDateString("pl-PL");
+              const displayedDate = formattedDate === "Invalid Date" ? value : formattedDate;
               return (
                 <Tile
                   key={key}
-                  onMouseEnter={(e) =>
-                    openTooltip(
-                      e,
-                      formattedDate === "Invalid Date" ? value : formattedDate,
-                    )
-                  }
+                  onMouseEnter={(e) => openTooltip(e, displayedDate)}
                   onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
                 >
-                  {formattedDate === "Invalid Date" ? value : formattedDate}
+                  {displayedDate}
                 </Tile>
               );
             } else

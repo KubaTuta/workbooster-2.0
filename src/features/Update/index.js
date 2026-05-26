@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ewiMap, macadamMap } from "./dataMaps";
-import { handleConvertRecords } from "../../hooks";
+import { handleConvertRecords } from "../../hooks/dataUpload";
 
 function Update() {
   const [file, setFile] = useState([null, null]);
