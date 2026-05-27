@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
 import { Layout, Header, Tile, Tooltip, Button } from "./styled";
 import { commonMap } from "../Update/dataMaps";
+import Collector from "../Collector";
 
 function B2C() {
   const [ewiCars, setEwiCars] = useState(new Map());
@@ -67,57 +68,62 @@ function B2C() {
   }
 
   return (
-    <Layout>
-      <>
-        {Object.keys(render?.[0] || {}).map((key) => (
-          <Header key={key}>{key.toUpperCase()}</Header>
-        ))}
-      </>
-      <>
-        {render.map((car, index) => {
-          return Object.entries(car).map(([key, value]) => {
-            const uniqueKey = key + index;
-            if (commonMap[key]?.isDate) {
-              const formattedDate = new Date(value).toLocaleDateString("pl-PL");
-              const displayedDate =
-                formattedDate === "Invalid Date" ? value : formattedDate;
-              return (
-                <Tile
-                  key={uniqueKey}
-                  onMouseEnter={(e) => openTooltip(e, displayedDate)}
-                  onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
-                >
-                  {displayedDate}
-                </Tile>
-              );
-            }
-            if (commonMap[key]?.isHyperlink) {
-              return (
-                <Button key={uniqueKey} onClick={(e) => openHyperlink(value)}>
-                  EKSPERTYZA
-                </Button>
-              );
-            } else
-              return (
-                <Tile
-                  key={uniqueKey}
-                  onMouseEnter={(e) => openTooltip(e, value)}
-                  onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
-                >
-                  {value}
-                </Tile>
-              );
-          });
-        })}
-      </>
-      <>
-        {hovered.value !== (null || undefined) && (
-          <Tooltip x={hovered.x} y={hovered.y}>
-            {hovered.value}
-          </Tooltip>
-        )}
-      </>
-    </Layout>
+    <>
+      <Collector />
+      <Layout>
+        <>
+          {Object.keys(render?.[0] || {}).map((key) => (
+            <Header key={key}>{key.toUpperCase()}</Header>
+          ))}
+        </>
+        <>
+          {render.map((car, index) => {
+            return Object.entries(car).map(([key, value]) => {
+              const uniqueKey = key + index;
+              if (commonMap[key]?.isDate) {
+                const formattedDate = new Date(value).toLocaleDateString(
+                  "pl-PL",
+                );
+                const displayedDate =
+                  formattedDate === "Invalid Date" ? value : formattedDate;
+                return (
+                  <Tile
+                    key={uniqueKey}
+                    onMouseEnter={(e) => openTooltip(e, displayedDate)}
+                    onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
+                  >
+                    {displayedDate}
+                  </Tile>
+                );
+              }
+              if (commonMap[key]?.isHyperlink) {
+                return (
+                  <Button key={uniqueKey} onClick={(e) => openHyperlink(value)}>
+                    EKSPERTYZA
+                  </Button>
+                );
+              } else
+                return (
+                  <Tile
+                    key={uniqueKey}
+                    onMouseEnter={(e) => openTooltip(e, value)}
+                    onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
+                  >
+                    {value}
+                  </Tile>
+                );
+            });
+          })}
+        </>
+        <>
+          {hovered.value !== (null || undefined) && (
+            <Tooltip x={hovered.x} y={hovered.y}>
+              {hovered.value}
+            </Tooltip>
+          )}
+        </>
+      </Layout>
+    </>
   );
 }
 export default B2C;
