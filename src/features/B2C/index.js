@@ -27,10 +27,11 @@ function B2C({plates, setPlates}) {
     loadData();
   }, []);
 
-  const render = macadamCars
-    .filter((macadamCar) => ewiCars.has(macadamCar.plate))
-    .map((macadamCar) => {
-      const ewiCar = ewiCars.get(macadamCar.plate);
+  const render = plates
+    .filter((plate) => ewiCars.has(plate))
+    .map((plate) => {
+      const ewiCar = ewiCars.get(plate);
+      const macadamCar = macadamCars.get(plate);
       return {
         plate: ewiCar.plate,
         vin: ewiCar.vin,
