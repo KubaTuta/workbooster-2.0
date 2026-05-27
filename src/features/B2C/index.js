@@ -4,27 +4,23 @@ import { Layout, Header, Tile, Tooltip, Button } from "./styled";
 import { commonMap } from "../Update/dataMaps";
 import Collector from "../Collector";
 
-function B2C({plates, setPlates}) {
+function B2C({ plates, setPlates }) {
   const [ewiCars, setEwiCars] = useState(new Map());
   const [macadamCars, setMacadamCars] = useState(new Map());
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
 
+  async function loadData(dbName, setter) {
+    const data = await downloadData(dbName);
+    const dataMap = new Map(data.map((car) => [car.plate, car]));
+    setter(dataMap);
+  }
+
   useEffect(() => {
-    async function loadData() {
-      const data = await downloadData("Ewidencja");
-      const dataMap = new Map(data.map((car) => [car.plate, car]));
-      setEwiCars(dataMap);
-    }
-    loadData();
+    loadData("Ewidencja", setEwiCars);
   }, []);
 
   useEffect(() => {
-    async function loadData() {
-      const data = await downloadData("Ekspertyzy");
-      const dataMap = new Map(data.map((car) => [car.plate, car]));
-      setMacadamCars(dataMap);
-    }
-    loadData();
+    loadData("Ekspertyzy", setMacadamCars);
   }, []);
 
   const render = plates
@@ -70,7 +66,7 @@ function B2C({plates, setPlates}) {
 
   return (
     <>
-      <Collector plates={plates} setPlates={setPlates}/>
+      <Collector plates={plates} setPlates={setPlates} />
       <Layout>
         <>
           {Object.keys(render?.[0] || {}).map((key) => (
