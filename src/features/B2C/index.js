@@ -6,7 +6,7 @@ import Collector from "../Collector";
 
 function B2C({plates, setPlates}) {
   const [ewiCars, setEwiCars] = useState(new Map());
-  const [macadamCars, setMacadamCars] = useState([]);
+  const [macadamCars, setMacadamCars] = useState(new Map());
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
 
   useEffect(() => {
@@ -21,8 +21,8 @@ function B2C({plates, setPlates}) {
   useEffect(() => {
     async function loadData() {
       const data = await downloadData("Ekspertyzy");
-
-      setMacadamCars(data);
+      const dataMap = new Map(data.map((car) => [car.plate, car]));
+      setMacadamCars(dataMap);
     }
     loadData();
   }, []);
