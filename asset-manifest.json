@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/workbooster-2.0/static/css/main.e6c13ad2.css",
-    "main.js": "/workbooster-2.0/static/js/main.afd9e2b1.js",
+    "main.js": "/workbooster-2.0/static/js/main.09eb25aa.js",
     "static/js/453.da9497aa.chunk.js": "/workbooster-2.0/static/js/453.da9497aa.chunk.js",
     "index.html": "/workbooster-2.0/index.html",
     "main.e6c13ad2.css.map": "/workbooster-2.0/static/css/main.e6c13ad2.css.map",
-    "main.afd9e2b1.js.map": "/workbooster-2.0/static/js/main.afd9e2b1.js.map",
+    "main.09eb25aa.js.map": "/workbooster-2.0/static/js/main.09eb25aa.js.map",
     "453.da9497aa.chunk.js.map": "/workbooster-2.0/static/js/453.da9497aa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.afd9e2b1.js"
+    "static/js/main.09eb25aa.js"
   ]
 }
