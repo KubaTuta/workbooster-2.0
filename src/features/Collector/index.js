@@ -1,7 +1,7 @@
 import { Layout, Frame, TextWindow, ConfirmationButton } from "./styled";
 import { useState } from "react";
 
-function Collector() {
+function Collector({ plates, setPlates }) {
   const [textarea, setTextarea] = useState("");
 
   function platePicker() {

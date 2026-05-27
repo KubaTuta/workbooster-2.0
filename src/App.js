@@ -2,9 +2,10 @@ import B2C from "./features/B2C";
 import Update from "./features/Update";
 import { Bar, LinkDiv, StyledNavLink } from "./styles";
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
-
+  const [plates, setPlates] = useState([]);
 
   return (
     <>
@@ -19,7 +20,7 @@ function App() {
         </LinkDiv>
       </Bar>
       <Routes>
-        <Route path="*" element={<B2C />}></Route>
+        <Route path="*" element={<B2C plates={plates} setPlates={setPlates}/>}></Route>
         <Route path="/update" element={<Update />}></Route>
       </Routes>
     </>

@@ -4,7 +4,7 @@ import { Layout, Header, Tile, Tooltip, Button } from "./styled";
 import { commonMap } from "../Update/dataMaps";
 import Collector from "../Collector";
 
-function B2C() {
+function B2C({plates, setPlates}) {
   const [ewiCars, setEwiCars] = useState(new Map());
   const [macadamCars, setMacadamCars] = useState([]);
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
@@ -69,7 +69,7 @@ function B2C() {
 
   return (
     <>
-      <Collector />
+      <Collector plates={plates} setPlates={setPlates}/>
       <Layout>
         <>
           {Object.keys(render?.[0] || {}).map((key) => (
