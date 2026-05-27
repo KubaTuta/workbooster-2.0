@@ -8,8 +8,25 @@ export const Layout = styled.div`
   margin: 10px;
 `;
 
+export const Header = styled.div`
+  background-color: #7f6027;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  align-items: center;
+  padding: 2px;
+  max-width: 100px;
+  min-width: 0px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 export const Tile = styled.div`
-  background-color: #14513c;
+  // background-color: #14513c;
+  background-color: #093f45;
   font-size: 15px;
   color: white;
   border-radius: 5px;

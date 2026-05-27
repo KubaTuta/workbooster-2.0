@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
-import { Layout, Tile, Tooltip, Button } from "./styled";
+import { Layout, Header, Tile, Tooltip, Button } from "./styled";
 import { commonMap } from "../Update/dataMaps";
 
 function B2C() {
@@ -42,10 +42,10 @@ function B2C() {
         color: ewiCar.color,
         mileage: ewiCar.mileage,
         prodYear: ewiCar.prodYear,
-        firstRegNb: ewiCar.firstRegNb,
+        firstRegDate: ewiCar.firstRegDate,
         damage: ewiCar.damage,
         comment: ewiCar.comment,
-        eurotax: ewiCar.eurotax,
+        eurotax: ewiCar.eurotaxValue,
         eurotaxDate: ewiCar.eurotaxDate,
         reservation: ewiCar.reservation,
         rvStat: ewiCar.rvStat,
@@ -70,7 +70,7 @@ function B2C() {
     <Layout>
       <>
         {Object.keys(render?.[0] || {}).map((key) => (
-          <Tile key={key}>{key}</Tile>
+          <Header key={key}>{key.toUpperCase()}</Header>
         ))}
       </>
       <>
