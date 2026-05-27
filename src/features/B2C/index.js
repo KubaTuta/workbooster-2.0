@@ -71,13 +71,14 @@ function B2C() {
       <>
         {renderedData.map((car, index) => {
           return Object.entries(car).map(([key, value]) => {
+            const uniqueKey = key + index;
             if (commonMap[key]?.isDate) {
               const formattedDate = new Date(value).toLocaleDateString("pl-PL");
               const displayedDate =
                 formattedDate === "Invalid Date" ? value : formattedDate;
               return (
                 <Tile
-                  key={key}
+                  key={uniqueKey}
                   onMouseEnter={(e) => openTooltip(e, displayedDate)}
                   onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
                 >
@@ -87,14 +88,14 @@ function B2C() {
             }
             if (commonMap[key]?.isHyperlink) {
               return (
-                <Button key={key} onClick={(e) => openHyperlink(value)}>
+                <Button key={uniqueKey} onClick={(e) => openHyperlink(value)}>
                   EKSPERTYZA
                 </Button>
               );
             } else
               return (
                 <Tile
-                  key={key}
+                  key={uniqueKey}
                   onMouseEnter={(e) => openTooltip(e, value)}
                   onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
                 >
