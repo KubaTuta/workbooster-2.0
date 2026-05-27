@@ -26,7 +26,7 @@ function B2C() {
     loadData();
   }, []);
 
-  const renderedData = macadamCars
+  const render = macadamCars
     .filter((macadamCar) => ewiCars.has(macadamCar.plate))
     .map((macadamCar) => {
       const ewiCar = ewiCars.get(macadamCar.plate);
@@ -69,7 +69,12 @@ function B2C() {
   return (
     <Layout>
       <>
-        {renderedData.map((car, index) => {
+        {Object.keys(render?.[0] || {}).map((key) => (
+          <Tile key={key}>{key}</Tile>
+        ))}
+      </>
+      <>
+        {render.map((car, index) => {
           return Object.entries(car).map(([key, value]) => {
             const uniqueKey = key + index;
             if (commonMap[key]?.isDate) {
