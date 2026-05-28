@@ -54,7 +54,8 @@ function B2C({ plates, setPlates }) {
         refurbishment: ewiCar.refurbishment,
         macadamWithPrice: macadamCar.macadamWithPrice,
       };
-    });
+    })
+    .filter(Boolean);
 
   function openTooltip(e, value) {
     setHovered({
