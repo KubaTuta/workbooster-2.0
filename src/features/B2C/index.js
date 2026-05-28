@@ -24,7 +24,6 @@ function B2C({ plates, setPlates }) {
   }, []);
 
   const render = plates
-    .filter((plate) => ewiCars.has(plate))
     .map((plate) => {
       const ewiCar = ewiCars.get(plate);
       const macadamCar = macadamCars.get(plate);
