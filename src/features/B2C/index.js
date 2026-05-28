@@ -27,6 +27,11 @@ function B2C({ plates, setPlates }) {
     .map((plate) => {
       const ewiCar = ewiCars.get(plate);
       const macadamCar = macadamCars.get(plate);
+
+      if (!ewiCar || !macadamCar) {
+        return null;
+      }
+
       return {
         plate: ewiCar.plate,
         vin: ewiCar.vin,
