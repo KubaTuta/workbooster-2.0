@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ewiMap, macadamMap } from "./dataMaps";
+import { damageMap, ewiMap, macadamMap } from "./dataMaps";
 import { handleConvertRecords } from "../../hooks/dataUpload";
 
 function Update() {
