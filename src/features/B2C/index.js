@@ -9,6 +9,7 @@ function B2C({ plates, setPlates }) {
   const [macadamCars, setMacadamCars] = useState(new Map());
   const [damageCars, setDamageCars] = useState(new Map());
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
+  const [isModal, setIsModal] = useState(false);
 
   async function loadData(dbName, setter) {
     const data = await downloadData(dbName);
@@ -104,7 +105,18 @@ function B2C({ plates, setPlates }) {
           {render.map((car, index) => {
             return Object.entries(car).map(([key, value]) => {
               const uniqueKey = key + index;
-              if (commonMap[key]?.isDate) {
+              if (commonMap[key]?.isArrayValue) {
+                const damages = damageCars.get(car.plate) || [];
+
+                return (
+                  <Button disabled={value.length > 0 ? false : true}
+                    key={uniqueKey}
+                    onClick={()=>console.log(damages)}
+                  >
+                    {value.length}
+                  </Button>
+                );
+              } else if (commonMap[key]?.isDate) {
                 const formattedDate = new Date(value).toLocaleDateString(
                   "pl-PL",
                 );
@@ -119,8 +131,7 @@ function B2C({ plates, setPlates }) {
                     {displayedDate}
                   </Tile>
                 );
-              }
-              if (commonMap[key]?.isHyperlink) {
+              } else if (commonMap[key]?.isHyperlink) {
                 return (
                   <Button key={uniqueKey} onClick={(e) => openHyperlink(value)}>
                     EKSPERTYZA

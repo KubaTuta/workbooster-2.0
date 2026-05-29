@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
   display: grid;
-  grid-template-columns: repeat(20, minmax(0, auto));
+  grid-template-columns: repeat(21, minmax(0, auto));
   width: max-content;
   grid-gap: 5px;
   margin: 10px;
@@ -47,10 +47,9 @@ export const Tooltip = styled.div`
   left: ${({ x }) => `${x}px`};
   top: ${({ y }) => `${y}px`};
   transform: translateY(-100%);
-  background: #076f4b;
+  background: #031f33;
   color: white;
-  padding: 5;
-  zindex: 9999;
+  z-index: 9999;
   padding: 5px;
   border-radius: 10px;
 `;
