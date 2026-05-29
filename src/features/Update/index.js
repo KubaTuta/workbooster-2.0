@@ -3,7 +3,7 @@ import { damageMap, ewiMap, macadamMap } from "./dataMaps";
 import { handleConvertRecords } from "../../hooks/dataUpload";
 
 function Update() {
-  const [file, setFile] = useState([null, null]);
+  const [file, setFile] = useState([null, null, null]);
 
   function handleInput(e, number) {
     setFile((prevFile) => {
@@ -36,6 +36,20 @@ function Update() {
             <button
               onClick={(e) =>
                 handleConvertRecords(e, 1, macadamMap, "Ekspertyzy", file)
+              }
+            >
+              Zapisz
+            </button>
+          ) : (
+            ""
+          )}
+        </>
+        <>
+          <input type="file" onChange={(e) => handleInput(e, 2)} />
+          {file[2] !== null ? (
+            <button
+              onClick={(e) =>
+                handleConvertRecords(e, 2, damageMap, "Szkody", file)
               }
             >
               Zapisz
