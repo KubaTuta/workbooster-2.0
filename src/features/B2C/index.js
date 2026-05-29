@@ -7,6 +7,7 @@ import Collector from "../Collector";
 function B2C({ plates, setPlates }) {
   const [ewiCars, setEwiCars] = useState(new Map());
   const [macadamCars, setMacadamCars] = useState(new Map());
+  const [damageCars, setDamageCars] = useState(new Map());
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
 
   async function loadData(dbName, setter) {
@@ -21,6 +22,27 @@ function B2C({ plates, setPlates }) {
 
   useEffect(() => {
     loadData("Ekspertyzy", setMacadamCars);
+  }, []);
+
+  function createDamageMap(cars) {
+    const map = new Map();
+
+    for (const car of cars) {
+      const foundedCar = map.get(car.plate) || [];
+      foundedCar.push(car);
+      map.set(car.plate, foundedCar);
+    }
+
+    return map;
+  }
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await downloadData("Szkody");
+      const dataMap = createDamageMap(data);
+      setDamageCars(dataMap);
+    }
+    loadData();
   }, []);
 
   const render = plates
