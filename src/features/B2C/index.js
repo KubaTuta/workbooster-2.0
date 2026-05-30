@@ -133,7 +133,7 @@ function B2C({ plates, setPlates }) {
                 );
               } else if (commonMap[key]?.isHyperlink) {
                 return (
-                  <Button key={uniqueKey} onClick={(e) => openHyperlink(value)}>
+                  <Button disabled={!value} key={uniqueKey} onClick={(e) => openHyperlink(value)}>
                     EKSPERTYZA
                   </Button>
                 );
