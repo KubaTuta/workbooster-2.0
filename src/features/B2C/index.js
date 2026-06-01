@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { downloadData } from "../../hooks/db";
-import { Layout, Header, Tile, Tooltip, Button } from "./styled";
-import { commonMap } from "../Update/dataMaps";
+import { Layout, Header, Tooltip } from "./styled";
 import Collector from "../Collector";
+import CarExpander from "../CarExpander";
 
 function B2C({ plates, setPlates }) {
   const [ewiCars, setEwiCars] = useState(new Map());
   const [macadamCars, setMacadamCars] = useState(new Map());
   const [damageCars, setDamageCars] = useState(new Map());
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
-  const [isModal, setIsModal] = useState(false);
 
   async function loadData(dbName, setter) {
     const data = await downloadData(dbName);
@@ -73,24 +72,12 @@ function B2C({ plates, setPlates }) {
         rvStat: ewiCar?.rvStat,
         refurbishment: ewiCar?.refurbishment,
         macadamWithPrice: macadamCar?.macadamWithPrice,
-        damageCost: damageCar
-          ? damageCar.map((damage) => damage.damageCost)
-          : "",
+        damageCost: damageCar?.damageCost,
+        // ? damageCar.map((damage) => damage.damageCost)
+        // : "",
       };
     })
     .filter(Boolean);
-
-  function openTooltip(e, value) {
-    setHovered({
-      value,
-      x: e.clientX,
-      y: e.clientY,
-    });
-  }
-
-  function openHyperlink(address) {
-    window.open(address, "_blank");
-  }
 
   return (
     <>
@@ -101,55 +88,11 @@ function B2C({ plates, setPlates }) {
             <Header key={key}>{key.toUpperCase()}</Header>
           ))}
         </>
-        <>
-          {render.map((car, index) => {
-            return Object.entries(car).map(([key, value]) => {
-              const uniqueKey = key + index;
-              if (commonMap[key]?.isArrayValue) {
-                const damages = damageCars.get(car.plate) || [];
-
-                return (
-                  <Button disabled={value.length > 0 ? false : true}
-                    key={uniqueKey}
-                    onClick={()=>console.log(damages)}
-                  >
-                    {value.length}
-                  </Button>
-                );
-              } else if (commonMap[key]?.isDate) {
-                const formattedDate = new Date(value).toLocaleDateString(
-                  "pl-PL",
-                );
-                const displayedDate =
-                  formattedDate === "Invalid Date" ? value : formattedDate;
-                return (
-                  <Tile
-                    key={uniqueKey}
-                    onMouseEnter={(e) => openTooltip(e, displayedDate)}
-                    onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
-                  >
-                    {displayedDate}
-                  </Tile>
-                );
-              } else if (commonMap[key]?.isHyperlink) {
-                return (
-                  <Button disabled={!value} key={uniqueKey} onClick={(e) => openHyperlink(value)}>
-                    EKSPERTYZA
-                  </Button>
-                );
-              } else
-                return (
-                  <Tile
-                    key={uniqueKey}
-                    onMouseEnter={(e) => openTooltip(e, value)}
-                    onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
-                  >
-                    {value}
-                  </Tile>
-                );
-            });
-          })}
-        </>
+        <CarExpander
+          render={render}
+          hovered={hovered}
+          setHovered={setHovered}
+        />
         <>
           {hovered.value !== (null || undefined) && (
             <Tooltip x={hovered.x} y={hovered.y}>
