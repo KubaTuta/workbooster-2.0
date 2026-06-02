@@ -6,7 +6,7 @@ export const Row = styled.div`
 
 export const Tile = styled.div`
   // background-color: #14513c;
-  background-color: #093f45;
+  background-color: ${({isEven})=> isEven ? "#093f45"  : "#0d5860"};
   font-size: 15px;
   color: white;
   border-radius: 5px;

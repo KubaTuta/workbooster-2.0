@@ -41,6 +41,7 @@ function CarExpander({ render, hovered, setHovered }) {
                   }
                   onMouseEnter={(e) => openTooltip(e, displayedDate)}
                   onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
+                  isEven={index % 2 === 0}
                 >
                   {displayedDate}
                 </Tile>
@@ -64,6 +65,7 @@ function CarExpander({ render, hovered, setHovered }) {
                   }
                   onMouseEnter={(e) => openTooltip(e, value)}
                   onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
+                  isEven={index % 2 === 0}
                 >
                   {value}
                 </Tile>
