@@ -74,7 +74,20 @@ function CarExpander({ render, hovered, setHovered }) {
                 </Tile>
               );
           })}
-          {expandedCar === car.plate && <Details>rozwinięte</Details>}
+          {expandedCar === car.plate &&
+            (car.damages.length > 0 ? (
+              <Details>
+                {car.damages.map((property) =>
+                  Object.entries(property).map(([key, value]) => (
+                    <div>
+                      {key}: {value}
+                    </div>
+                  )),
+                )}
+              </Details>
+            ) : (
+              <Details>pozostałe</Details>
+            ))}
         </Row>
       ))}
     </>
