@@ -12,7 +12,7 @@ function Collector({ plates, setPlates }) {
         /[a-zA-Z]/.test(word[0]) &&
         (word.length === 7 || word.length === 8)
       ) {
-        acc.push(word);
+        acc.push(word.toUpperCase());
       } else if (
         /[a-zA-Z]/.test(word[0]) &&
         word.length < 7 &&
@@ -20,11 +20,11 @@ function Collector({ plates, setPlates }) {
       ) {
         const combined2words = word + arr[index + 1];
         if (combined2words.length === 7 || combined2words.length === 8) {
-          acc.push(combined2words);
+          acc.push(combined2words.toUpperCase());
         } else if (combined2words.length < 7 && arr[index + 2]) {
           const combined3words = combined2words + arr[index + 2];
           (combined3words.length === 7 || combined3words.length === 8) &&
-            acc.push(combined3words);
+            acc.push(combined3words.toUpperCase());
         }
       }
       return acc;
