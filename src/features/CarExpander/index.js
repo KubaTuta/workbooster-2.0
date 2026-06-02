@@ -23,10 +23,13 @@ function CarExpander({ render, hovered, setHovered }) {
         <Row key={car.plate}>
           {Object.entries(car).map(([key, value]) => {
             const uniqueKey = key + index;
-            if (commonMap[key]?.isArrayValue) {
+            if (key === "damages") {
               return (
-                <Button key={uniqueKey} onClick={() => console.log(key[value])}>
-                  sfdaf
+                <Button
+                  key={uniqueKey}
+                  onClick={() => console.log(car.damages)}
+                >
+                  {car?.damages ? car.damages.length : 0}
                 </Button>
               );
             } else if (commonMap[key]?.isDate) {
