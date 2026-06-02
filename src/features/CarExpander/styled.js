@@ -28,6 +28,12 @@ export const Tile = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.5);
+}
 `;
 
 export const Button = styled.button`
