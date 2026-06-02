@@ -9,6 +9,8 @@ export const Layout = styled.div`
 `;
 
 export const Header = styled.div`
+  position: sticky;
+  top: 5px;
   background-color: #7f6027;
   text-align: center;
   font-size: 15px;
