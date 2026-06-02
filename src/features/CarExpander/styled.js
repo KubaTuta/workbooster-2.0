@@ -17,6 +17,7 @@ export const Tile = styled.div`
       ? `linear-gradient(to bottom, #0d5961, #093f45)`
       : `linear-gradient(to bottom, #13707a, #0d5860)`};
   font-size: 15px;
+  font-weight: 200;
   color: white;
   border-radius: 5px;
   align-items: center;
