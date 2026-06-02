@@ -72,9 +72,7 @@ function B2C({ plates, setPlates }) {
         rvStat: ewiCar?.rvStat,
         refurbishment: ewiCar?.refurbishment,
         macadamWithPrice: macadamCar?.macadamWithPrice,
-        damageCost: damageCar?.damageCost,
-        // ? damageCar.map((damage) => damage.damageCost)
-        // : "",
+        damages: damageCar || [],
       };
     })
     .filter(Boolean);
