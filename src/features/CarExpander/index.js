@@ -93,7 +93,7 @@ function CarExpander({ render, hovered, setHovered }) {
                 )}
               </Details>
             ) : (
-              <Details>pozostałe</Details>
+              <Details>Brak zarejestrowanych szkód</Details>
             ))}
         </Row>
       ))}
