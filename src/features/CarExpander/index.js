@@ -17,6 +17,13 @@ function CarExpander({ render, hovered, setHovered }) {
     window.open(address, "_blank");
   }
 
+  function openDamageHyperlink(plate) {
+    window.open(
+      `https://serwisarval.pl/claims/insurancecase/index/page/1?claim_number=&contract_plate_number=${plate}&claim_number_insurance_company=&client_name=&claim_date_from=&claim_date_to=&type=&case_closed=&special_care=&gaps_filled=&submitFilterForm=Filtruj`,
+      "_blank",
+    );
+  }
+
   return (
     <>
       {render.map((car, index) => (
