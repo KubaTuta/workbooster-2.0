@@ -61,7 +61,7 @@ function CarExpander({ render, hovered, setHovered }) {
                 <Button
                   disabled={!value}
                   key={uniqueKey}
-                  onClick={(e) => openHyperlink(value)}
+                  onClick={() => openHyperlink(value)}
                 >
                   EKSPERTYZA
                 </Button>
