@@ -34,7 +34,7 @@ function CarExpander({ render, hovered, setHovered }) {
               return (
                 <Button
                   key={uniqueKey}
-                  onClick={() => console.log(car.damages)}
+                  onClick={() => openDamageHyperlink(car.plate)}
                 >
                   {car?.damages ? car.damages.length : 0}
                 </Button>
