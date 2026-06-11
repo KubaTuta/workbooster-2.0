@@ -1,5 +1,5 @@
-import B2C from "./features/B2C";
-import Update from "./features/Update";
+import B2C from "./components/B2C/b2c.js";
+import Update from "./components/Update";
 import { Bar, LinkDiv, StyledNavLink } from "./styles";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";

@@ -1,4 +1,4 @@
-import { Layout, Frame, TextWindow, ConfirmationButton } from "./styled";
+import { CollectorLayout, Frame, TextWindow, ConfirmationButton } from "./styled";
 import { useState } from "react";
 
 function Collector({ plates, setPlates }) {
@@ -33,7 +33,7 @@ function Collector({ plates, setPlates }) {
   }
 
   return (
-    <Layout>
+    <CollectorLayout>
       <Frame>
         <TextWindow
           value={textarea}
@@ -41,7 +41,7 @@ function Collector({ plates, setPlates }) {
         ></TextWindow>
         <ConfirmationButton onClick={platePicker}>OK</ConfirmationButton>
       </Frame>
-    </Layout>
+    </CollectorLayout>
   );
 }
 export default Collector;
