@@ -30,7 +30,7 @@ function B2C({ plates, setPlates }) {
           setHovered={setHovered}
         />
         <>
-          {hovered.value !== (null || undefined) && (
+          {hovered.value !== undefined && (
             <Tooltip x={hovered.x} y={hovered.y}>
               {hovered.value}
             </Tooltip>
