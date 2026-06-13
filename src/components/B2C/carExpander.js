@@ -1,7 +1,7 @@
 import { Row, Tile, Button, Details } from "./styled";
 import { useState } from "react";
 import { commonMap } from "../Update/dataMaps";
-import { damageUrl } from "../../constants/urls";
+import { openDamageHyperlink, openHyperlink } from "../../utils/hyperlinks";
 
 function CarExpander({ render, hovered, setHovered }) {
   const [expandedCar, setExpandedCar] = useState(null);
@@ -12,15 +12,6 @@ function CarExpander({ render, hovered, setHovered }) {
       x: e.clientX,
       y: e.clientY,
     });
-  }
-
-  function openHyperlink(address) {
-    window.open(address, "_blank");
-  }
-
-  function openDamageHyperlink(plate) {
-    const url = damageUrl(plate);
-    window.open(url, "_blank");
   }
 
   return (
