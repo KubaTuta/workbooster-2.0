@@ -1,5 +1,6 @@
 export function buildCarsViewModel(plates, ewiCars, macadamCars, damageCars) {
-  const render = plates
+
+  const viewCarsModel = plates
     .map((plate) => {
       const ewiCar = ewiCars.get(plate);
       const macadamCar = macadamCars.get(plate);
@@ -31,5 +32,5 @@ export function buildCarsViewModel(plates, ewiCars, macadamCars, damageCars) {
     })
     .filter(Boolean);
 
-  return render;
+  return viewCarsModel;
 }

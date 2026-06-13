@@ -4,14 +4,12 @@ import { getHeaders } from "../../utils/headers";
 import { Layout, Header, Tooltip } from "./styled";
 import Collector from "./collector";
 import CarExpander from "./carExpander";
-import { useCarsData } from "../../hooks/useCarsData";
-import { buildCarsViewModel } from "../../services/carsViewModel";
 
 function B2C({ plates, setPlates }) {
 
   const { hovered, setHovered } = useTooltip();
 
-  const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
+  const carsViewModel = useCarsViewModel(plates);
 
   const header = getHeaders(carsViewModel);
 
@@ -25,7 +23,7 @@ function B2C({ plates, setPlates }) {
           ))}
         </>
         <CarExpander
-          render={render}
+          render={carsViewModel}
           hovered={hovered}
           setHovered={setHovered}
         />
