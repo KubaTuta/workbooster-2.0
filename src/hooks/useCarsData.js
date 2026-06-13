@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { downloadData } from "./db";
+import { downloadData } from "../db/db";
 import { DB_TABLES } from "../constants/dbTables";
 
 export function useCarsData() {

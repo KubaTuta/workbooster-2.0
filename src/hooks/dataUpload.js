@@ -1,4 +1,4 @@
-import { db } from "./db";
+import { db } from "../db/db";
 var XLSX = require("xlsx");
 
 export function excelDateToISO(excelDate) {
