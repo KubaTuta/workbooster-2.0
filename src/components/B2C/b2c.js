@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useTooltip } from "../../hooks/useTooltip";
+import { useCarsViewModel } from "../../hooks/useCarsViewModel";
+import { getHeaders } from "../../utils/headers";
 import { Layout, Header, Tooltip } from "./styled";
 import Collector from "./collector";
 import CarExpander from "./carExpander";
@@ -10,14 +12,14 @@ function B2C({ plates, setPlates }) {
 
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
 
-  const render = buildCarsViewModel(plates, ewiCars, macadamCars, damageCars);
+  const header = getHeaders(carsViewModel);
 
   return (
     <>
       <Collector plates={plates} setPlates={setPlates} />
       <Layout>
         <>
-          {Object.keys(render?.[0] || {}).map((key) => (
+          {header.map((key) => (
             <Header key={key}>{key.toUpperCase()}</Header>
           ))}
         </>
