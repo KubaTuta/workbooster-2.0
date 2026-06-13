@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { damageMap, ewiMap, macadamMap } from "./dataMaps";
 import { handleConvertRecords } from "../../hooks/dataUpload";
+import { DB_TABLES } from "../../constants/dbTables";
 
 function Update() {
   const [file, setFile] = useState([null, null, null]);
@@ -21,7 +22,7 @@ function Update() {
           {file[0] !== null ? (
             <button
               onClick={(e) =>
-                handleConvertRecords(e, 0, ewiMap, "Ewidencja", file)
+                handleConvertRecords(e, 0, ewiMap, DB_TABLES.EWI, file)
               }
             >
               Zapisz
@@ -35,7 +36,7 @@ function Update() {
           {file[1] !== null ? (
             <button
               onClick={(e) =>
-                handleConvertRecords(e, 1, macadamMap, "Ekspertyzy", file)
+                handleConvertRecords(e, 1, macadamMap, DB_TABLES.MACADAM, file)
               }
             >
               Zapisz
@@ -49,7 +50,7 @@ function Update() {
           {file[2] !== null ? (
             <button
               onClick={(e) =>
-                handleConvertRecords(e, 2, damageMap, "Szkody", file)
+                handleConvertRecords(e, 2, damageMap, DB_TABLES.DAMAGE, file)
               }
             >
               Zapisz

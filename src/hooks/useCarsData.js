@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { downloadData } from "./db";
+import { DB_TABLES } from "../constants/dbTables";
 
 export function useCarsData() {
   const [ewiCars, setEwiCars] = useState(new Map());
@@ -13,11 +14,11 @@ export function useCarsData() {
   }
 
   useEffect(() => {
-    loadData("Ewidencja", setEwiCars);
+    loadData(DB_TABLES.EWI, setEwiCars);
   }, []);
 
   useEffect(() => {
-    loadData("Ekspertyzy", setMacadamCars);
+    loadData(DB_TABLES.MACADAM, setMacadamCars);
   }, []);
 
   function createDamageMap(cars) {
@@ -34,7 +35,7 @@ export function useCarsData() {
 
   useEffect(() => {
     async function loadData() {
-      const data = await downloadData("Szkody");
+      const data = await downloadData(DB_TABLES.DAMAGE);
       const dataMap = createDamageMap(data);
       setDamageCars(dataMap);
     }
