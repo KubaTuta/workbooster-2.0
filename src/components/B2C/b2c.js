@@ -8,7 +8,8 @@ import { useCarsData } from "../../hooks/useCarsData";
 import { buildCarsViewModel } from "../../services/carsViewModel";
 
 function B2C({ plates, setPlates }) {
-  const { ewiCars, macadamCars, damageCars } = useCarsData();
+
+  const { hovered, setHovered } = useTooltip();
 
   const [hovered, setHovered] = useState({ value: null, x: 0, y: 0 });
 
