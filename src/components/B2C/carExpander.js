@@ -1,6 +1,7 @@
 import { Row, Tile, Button, Details } from "./styled";
 import { useState } from "react";
 import { commonMap } from "../Update/dataMaps";
+import { damageUrl } from "../../constants/urls";
 
 function CarExpander({ render, hovered, setHovered }) {
   const [expandedCar, setExpandedCar] = useState(null);
@@ -18,10 +19,8 @@ function CarExpander({ render, hovered, setHovered }) {
   }
 
   function openDamageHyperlink(plate) {
-    window.open(
-      `https://serwisarval.pl/claims/insurancecase/index/page/1?claim_number=&contract_plate_number=${plate}&claim_number_insurance_company=&client_name=&claim_date_from=&claim_date_to=&type=&case_closed=&special_care=&gaps_filled=&submitFilterForm=Filtruj`,
-      "_blank",
-    );
+    const url = damageUrl(plate);
+    window.open(url, "_blank");
   }
 
   return (
@@ -84,11 +83,11 @@ function CarExpander({ render, hovered, setHovered }) {
           {expandedCar === car.plate &&
             (car.damages.length > 0 ? (
               <Details>
-                {car.damages.map((property) =>
-                <div>
-                  {property.damageCost} PLN ----- {property.damageType} ----- {property.damageDate.trim()}
-                </div>
-                )}
+                {car.damages.map((property) => (
+                  <div>
+                    {property.damageCost} PLN ----- {property.damageType} ----- {property.damageDate.trim()}
+                  </div>
+                ))}
               </Details>
             ) : (
               <Details>Brak zarejestrowanych szkód</Details>
