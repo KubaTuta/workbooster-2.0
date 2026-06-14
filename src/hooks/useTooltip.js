@@ -11,7 +11,7 @@ export function useTooltip() {
     });
   }
 
-  function closeTooltip() {
+  function closeTooltip(setHovered) {
     setHovered({ value: null, x: 0, y: 0 });
   }
 

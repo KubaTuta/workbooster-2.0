@@ -34,7 +34,7 @@ function CarExpander({ carsViewModel, setHovered }) {
                   onMouseEnter={(e) =>
                     openTooltip(e, displayedDate, setHovered)
                   }
-                  onMouseLeave={() => closeTooltip()}
+                  onMouseLeave={() => closeTooltip(setHovered)}
                   iseven={index % 2 === 0}
                 >
                   {displayedDate}
@@ -56,7 +56,7 @@ function CarExpander({ carsViewModel, setHovered }) {
                   key={uniqueKey}
                   onClick={() => toggleCar(car.plate)}
                   onMouseEnter={(e) => openTooltip(e, value, setHovered)}
-                  onMouseLeave={() => closeTooltip()}
+                  onMouseLeave={() => closeTooltip(setHovered)}
                   iseven={index % 2 === 0}
                 >
                   {value}
