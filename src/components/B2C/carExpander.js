@@ -3,6 +3,7 @@ import { Row, Tile, Button, Details } from "./styled";
 import { commonMap } from "../Update/dataMaps";
 import { openDamageHyperlink, openHyperlink } from "../../utils/hyperlinks";
 import { useTooltip } from "../../hooks/useTooltip";
+import { formatDate } from "../../utils/formatDate";
 
 function CarExpander({ carsViewModel, setHovered }) {
   const { expandedCar, toggleCar } = useExpanderCar();
@@ -24,20 +25,17 @@ function CarExpander({ carsViewModel, setHovered }) {
                 </Button>
               );
             } else if (commonMap[key]?.isDate) {
-              const formattedDate = new Date(value).toLocaleDateString("pl-PL");
-              const displayedDate =
-                formattedDate === "Invalid Date" ? value : formattedDate;
               return (
                 <Tile
                   key={uniqueKey}
                   onClick={() => toggleCar(car.plate)}
                   onMouseEnter={(e) =>
-                    openTooltip(e, displayedDate, setHovered)
+                    openTooltip(e, formatDate(value), setHovered)
                   }
                   onMouseLeave={() => closeTooltip(setHovered)}
                   iseven={index % 2 === 0}
                 >
-                  {displayedDate}
+                  {formatDate(value)}
                 </Tile>
               );
             } else if (commonMap[key]?.isHyperlink) {
