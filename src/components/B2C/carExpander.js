@@ -69,8 +69,8 @@ function CarExpander({ carsViewModel, hovered, setHovered }) {
           {expandedCar === car.plate &&
             (car.damages.length > 0 ? (
               <Details>
-                {car.damages.map((property) => (
-                  <div>
+                {car.damages.map((property, index) => (
+                  <div key={index}>
                     {property.damageCost} PLN ----- {property.damageType} ----- {property.damageDate.trim()}
                   </div>
                 ))}
