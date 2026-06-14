@@ -1,18 +1,11 @@
-import { Row, Tile, Button, Details } from "./styled";
 import { useState } from "react";
+import { Row, Tile, Button, Details } from "./styled";
 import { commonMap } from "../Update/dataMaps";
 import { openDamageHyperlink, openHyperlink } from "../../utils/hyperlinks";
+import { openTooltip } from "../../utils/tooltip";
 
 function CarExpander({ render, hovered, setHovered }) {
   const [expandedCar, setExpandedCar] = useState(null);
-
-  function openTooltip(e, value) {
-    setHovered({
-      value,
-      x: e.clientX,
-      y: e.clientY,
-    });
-  }
 
   return (
     <>
@@ -39,7 +32,9 @@ function CarExpander({ render, hovered, setHovered }) {
                   onClick={() =>
                     setExpandedCar(expandedCar === car.plate ? null : car.plate)
                   }
-                  onMouseEnter={(e) => openTooltip(e, displayedDate)}
+                  onMouseEnter={(e) =>
+                    openTooltip(e, displayedDate, setHovered)
+                  }
                   onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
                   isEven={index % 2 === 0}
                 >
@@ -63,7 +58,7 @@ function CarExpander({ render, hovered, setHovered }) {
                   onClick={() =>
                     setExpandedCar(expandedCar === car.plate ? null : car.plate)
                   }
-                  onMouseEnter={(e) => openTooltip(e, value)}
+                  onMouseEnter={(e) => openTooltip(e, value, setHovered)}
                   onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
                   isEven={index % 2 === 0}
                 >
