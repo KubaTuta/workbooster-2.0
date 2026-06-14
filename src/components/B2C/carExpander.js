@@ -1,9 +1,10 @@
-import { useExpanderCar, toggleCar } from "../../hooks/useExpanderCar";
-import { Row, Tile, Button, Details } from "./styled";
-import { openDamageHyperlink, openHyperlink } from "../../utils/hyperlinks";
+import { useExpanderCar } from "../../hooks/useExpanderCar";
 import { useTooltip } from "../../hooks/useTooltip";
 import { formatDate } from "../../utils/formatDate";
 import { getCellType } from "../../utils/getCellType";
+import { openDamageHyperlink, openHyperlink } from "../../utils/hyperlinks";
+import DamageDetails from "./damageDetails";
+import { Button, Row, Tile } from "./styled";
 
 function CarExpander({ carsViewModel, setHovered }) {
   const { expandedCar, toggleCar } = useExpanderCar();
@@ -64,18 +65,7 @@ function CarExpander({ carsViewModel, setHovered }) {
                 );
             }
           })}
-          {expandedCar === car.plate &&
-            (car.damages.length > 0 ? (
-              <Details>
-                {car.damages.map((property, index) => (
-                  <div key={index}>
-                    {property.damageCost} PLN ----- {property.damageType} ----- {property.damageDate.trim()}
-                  </div>
-                ))}
-              </Details>
-            ) : (
-              <Details>Brak zarejestrowanych szkód</Details>
-            ))}
+          {expandedCar === car.plate && <DamageDetails car={car} />}
         </Row>
       ))}
     </>
