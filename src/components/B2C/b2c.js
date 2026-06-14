@@ -24,7 +24,6 @@ function B2C({ plates, setPlates }) {
         </>
         <CarExpander
           carsViewModel={carsViewModel}
-          hovered={hovered}
           setHovered={setHovered}
         />
         <>
