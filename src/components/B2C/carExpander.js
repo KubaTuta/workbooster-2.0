@@ -2,11 +2,11 @@ import { useExpanderCar, toggleCar } from "../../hooks/useExpanderCar";
 import { Row, Tile, Button, Details } from "./styled";
 import { commonMap } from "../Update/dataMaps";
 import { openDamageHyperlink, openHyperlink } from "../../utils/hyperlinks";
-import { openTooltip } from "../../utils/tooltip";
+import { useTooltip } from "../../hooks/useTooltip";
 
 function CarExpander({ carsViewModel, setHovered }) {
-
   const { expandedCar, toggleCar } = useExpanderCar();
+  const { openTooltip, closeTooltip } = useTooltip();
 
   return (
     <>
@@ -34,8 +34,8 @@ function CarExpander({ carsViewModel, setHovered }) {
                   onMouseEnter={(e) =>
                     openTooltip(e, displayedDate, setHovered)
                   }
-                  onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
-                  isEven={index % 2 === 0}
+                  onMouseLeave={() => closeTooltip()}
+                  iseven={index % 2 === 0}
                 >
                   {displayedDate}
                 </Tile>
@@ -56,8 +56,8 @@ function CarExpander({ carsViewModel, setHovered }) {
                   key={uniqueKey}
                   onClick={() => toggleCar(car.plate)}
                   onMouseEnter={(e) => openTooltip(e, value, setHovered)}
-                  onMouseLeave={() => setHovered({ value: null, x: 0, y: 0 })}
-                  isEven={index % 2 === 0}
+                  onMouseLeave={() => closeTooltip()}
+                  iseven={index % 2 === 0}
                 >
                   {value}
                 </Tile>
@@ -68,7 +68,8 @@ function CarExpander({ carsViewModel, setHovered }) {
               <Details>
                 {car.damages.map((property, index) => (
                   <div key={index}>
-                    {property.damageCost} PLN ----- {property.damageType} ----- {property.damageDate.trim()}
+                    {property.damageCost} PLN ----- {property.damageType} -----{" "}
+                    {property.damageDate.trim()}
                   </div>
                 ))}
               </Details>

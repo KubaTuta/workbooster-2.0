@@ -47,13 +47,13 @@ export const Row = styled.div`
 export const Tile = styled.div`
   background: linear-gradient(to bottom, #0d5961, #093f45);
 
-  box-shadow: ${({ isEven }) =>
-    isEven
+  box-shadow: ${({ iseven }) =>
+    iseven
       ? `0 3px 6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15)`
       : `0 3px 6px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)`};
   border-radius: 6px;
-  background: ${({ isEven }) =>
-    isEven
+  background: ${({ iseven }) =>
+    iseven
       ? `linear-gradient(to bottom, #0d5961, #093f45)`
       : `linear-gradient(to bottom, #13707a, #0d5860)`};
   font-size: 15px;
