@@ -4,12 +4,12 @@ import { commonMap } from "../Update/dataMaps";
 import { openDamageHyperlink, openHyperlink } from "../../utils/hyperlinks";
 import { openTooltip } from "../../utils/tooltip";
 
-function CarExpander({ render, hovered, setHovered }) {
+function CarExpander({ carsViewModel, hovered, setHovered }) {
   const [expandedCar, setExpandedCar] = useState(null);
 
   return (
     <>
-      {render.map((car, index) => (
+      {carsViewModel.map((car, index) => (
         <Row key={car.plate}>
           {Object.entries(car).map(([key, value]) => {
             const uniqueKey = key + index;
