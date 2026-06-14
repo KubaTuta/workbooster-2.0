@@ -1,4 +1,4 @@
-import { commonMap } from "../components/Update/dataMaps";
+import { commonMap } from "../constants/dataMaps";
 
 export function getCellType(key) {
   if (key === "damages") return "damages";
