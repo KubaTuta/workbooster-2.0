@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { damageMap, ewiMap, macadamMap } from "./dataMaps";
-import { handleConvertRecords } from "../../hooks/dataUpload";
+import { damageMap, ewiMap, macadamMap } from "../../constants/dataMaps"
+import { handleConvertRecords } from "../../services/dataUpload";
 import { DB_TABLES } from "../../constants/dbTables";
 
 function Update() {
