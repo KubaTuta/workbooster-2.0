@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { damageMap, ewiMap, macadamMap } from "../../constants/dataMaps"
+import { damageMap, ewiMap, macadamMap } from "../../constants/dataMaps";
 import { handleConvertRecords } from "../../services/dataUpload";
 import { DB_TABLES } from "../../constants/dbTables";
+import { macadamUrl } from "../../constants/urls";
+import { downloadApi } from "../../api/damageApi";
 
 function Update() {
   const [file, setFile] = useState([null, null, null]);
@@ -60,6 +62,15 @@ function Update() {
           )}
         </>
       </form>
+      <>
+        <button
+          onClick={(e) =>
+            downloadApi(macadamUrl, damageMap, DB_TABLES.DAMAGE)
+          }
+        >
+          Testowe szkody
+        </button>
+      </>
     </div>
   );
 }
