@@ -2,8 +2,8 @@ import { useState } from "react";
 import { damageMap, ewiMap, macadamMap } from "../../constants/dataMaps";
 import { handleConvertRecords } from "../../services/dataUpload";
 import { DB_TABLES } from "../../constants/dbTables";
-import { macadamUrl } from "../../constants/urls";
-import { downloadApi } from "../../api/damageApi";
+import { FileGrid } from "./styled";
+
 
 function Update() {
   const [file, setFile] = useState([null, null, null]);
@@ -17,8 +17,12 @@ function Update() {
   }
 
   return (
-    <div>
-      <form>
+    <>
+      <FileGrid>
+       
+      </FileGrid>
+
+      {/* <div>
         <>
           <input type="file" onChange={(e) => handleInput(e, 0)} />
           {file[0] !== null ? (
