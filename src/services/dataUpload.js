@@ -24,7 +24,7 @@ export function handleConvertRecords(
 
       const resultArray = parseExcelRecords(rows, mapObject, worksheet);
       
-      saveRecordsToDB(storageStringName, resultArray);
+      await saveRecordsToDB(storageStringName, resultArray);
 
       alert(`Zapisano dane w ${storageStringName}`);
     };
