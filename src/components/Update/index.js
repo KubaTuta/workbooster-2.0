@@ -62,15 +62,6 @@ function Update() {
           )}
         </>
       </form>
-      <>
-        <button
-          onClick={(e) =>
-            downloadApi(macadamUrl, damageMap, DB_TABLES.DAMAGE)
-          }
-        >
-          Testowe szkody
-        </button>
-      </>
     </div>
   );
 }
