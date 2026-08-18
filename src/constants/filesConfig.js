@@ -8,7 +8,7 @@ export const filesConfig = [
     table: DB_TABLES.EWI,
   },
   {
-    label: "Macadam",
+    label: "Ekspertyzy",
     map: macadamMap,
     table: DB_TABLES.MACADAM,
   },
