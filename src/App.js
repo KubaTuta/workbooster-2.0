@@ -3,6 +3,7 @@ import Update from "./components/Update";
 import { Bar, LinkDiv, StyledNavLink } from "./styles";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import Main from "./components/Main/main.js";
 
 function App() {
   const [plates, setPlates] = useState([]);
@@ -16,11 +17,19 @@ function App() {
           </StyledNavLink>
         </LinkDiv>
         <LinkDiv>
-          <StyledNavLink to="update">Update</StyledNavLink>
+          <StyledNavLink to="/b2c">
+            B2C
+          </StyledNavLink>
+        </LinkDiv>
+        <LinkDiv>
+          <StyledNavLink to="update">
+            Update
+            </StyledNavLink>
         </LinkDiv>
       </Bar>
       <Routes>
-        <Route path="*" element={<B2C plates={plates} setPlates={setPlates}/>}></Route>
+        <Route path="*" element={<Main plates={plates} setPlates={setPlates}/>}></Route>
+        <Route path="/b2c" element={<B2C plates={plates} setPlates={setPlates}/>}></Route>
         <Route path="/update" element={<Update />}></Route>
       </Routes>
     </>
