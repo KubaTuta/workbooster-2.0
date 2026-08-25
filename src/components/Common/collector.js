@@ -1,6 +1,5 @@
 import { pickOutOnlyPlates } from "../../services/pickOutOnlyPlates";
-import { CollectorLayout, Frame, TextWindow } from "../B2C/styled";
-import { ConfirmationButton } from "./styled";
+import { ConfirmationButton, CollectorLayout, Frame, TextWindow} from "./styled";
 import { useState } from "react";
 
 function Collector({ setPlates }) {

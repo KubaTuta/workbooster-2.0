@@ -9,3 +9,20 @@ export const ConfirmationButton = styled.button`
     background: rgba(0, 0, 0, 0.7);
   }
 `;
+
+export const CollectorLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+export const Frame = styled.div`
+  display: flex;
+`;
+
+export const TextWindow = styled.textarea`
+  height: 300px;
+  width: 500px;
+`;
