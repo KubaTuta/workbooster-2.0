@@ -99,20 +99,3 @@ export const Details = styled.div`
   padding: 20px;
   margin-bottom: 5px;
 `;
-
-export const CollectorLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-`;
-
-export const Frame = styled.div`
-  display: flex;
-`;
-
-export const TextWindow = styled.textarea`
-  height: 300px;
-  width: 500px;
-`;
