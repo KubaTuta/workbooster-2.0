@@ -2,7 +2,7 @@ import { useTooltip } from "../../hooks/useTooltip";
 import { useCarsViewModel } from "../../hooks/useCarsViewModel";
 import { getHeaders } from "../../utils/headers";
 import { Layout, Header, Tooltip } from "./styled";
-import Collector from "./collector";
+import Collector from "../Common/collector";
 import CarExpander from "./carExpander";
 
 function B2C({ plates, setPlates }) {
@@ -15,7 +15,7 @@ function B2C({ plates, setPlates }) {
 
   return (
     <>
-      <Collector plates={plates} setPlates={setPlates} />
+      <Collector setPlates={setPlates} />
       <Layout>
         <>
           {header.map((key) => (
