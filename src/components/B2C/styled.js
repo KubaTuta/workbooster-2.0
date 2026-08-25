@@ -116,13 +116,3 @@ export const TextWindow = styled.textarea`
   height: 300px;
   width: 500px;
 `;
-
-export const ConfirmationButton = styled.button`
-  color: white;
-  background: black;
-  transition: 0.2s;
-  &:hover {
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.7);
-  }
-`;
