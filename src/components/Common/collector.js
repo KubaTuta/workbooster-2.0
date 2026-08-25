@@ -1,9 +1,9 @@
 import { pickOutOnlyPlates } from "../../services/pickOutOnlyPlates";
-import { CollectorLayout, Frame, TextWindow } from "./styled";
-import { ConfirmationButton } from "../Common/styled";
+import { CollectorLayout, Frame, TextWindow } from "../B2C/styled";
+import { ConfirmationButton } from "./styled";
 import { useState } from "react";
 
-function Collector({ plates, setPlates }) {
+function Collector({ setPlates }) {
   const [textarea, setTextarea] = useState("");
 
   return (
