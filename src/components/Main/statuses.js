@@ -1,11 +1,11 @@
+import Plate from "./plate";
+import SingleStatus from "./singleStatus";
+
 function Statuses({plates}) {
     return (
         <>
-        {plates.map(plate=> (
-            <div>
-                {plate}
-            </div>
-        ))}
+        <Plate plates={plates} />
+        <SingleStatus plates={plates} />
         </>
     )
 }
