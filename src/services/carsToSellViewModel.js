@@ -1,3 +1,5 @@
+// tworzy gotowy model do renderu 
+
 export function buildCarsToSellViewModel(plates, ewiCars) {
 
   const carsToSellViewModel = plates

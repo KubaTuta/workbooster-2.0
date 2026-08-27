@@ -1,3 +1,5 @@
+// pobiera dane z data base, tworzy i zwraca mapy
+
 import { useEffect, useState } from "react";
 import { downloadData } from "../db/db";
 import { DB_TABLES } from "../constants/dbTables";

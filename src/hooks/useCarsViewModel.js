@@ -1,3 +1,5 @@
+// bierze wymagane dane i tworzy model dla konkretnego modułu 
+
 import { buildCarsViewModel } from "../services/carsViewModel";
 import { useCarsData } from "./useCarsData";
 

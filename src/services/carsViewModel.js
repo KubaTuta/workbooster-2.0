@@ -1,3 +1,5 @@
+// tworzy gotowy model do renderu 
+
 export function buildCarsViewModel(plates, ewiCars, macadamCars, damageCars) {
 
   const viewCarsModel = plates
