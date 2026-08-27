@@ -9,7 +9,11 @@ export function buildCarsToSellViewModel(plates, ewiCars) {
       return {
         plate: ewiCar?.plate,
         vin: ewiCar?.vin,
+        firstRegDate: ewiCar?.firstRegDate,
         status: ewiCar?.status,
+        insurer: ewiCar?.insurer,
+        ocExpirationDate: ewiCar?.ocExpirationDate,
+
       };
     })
     .filter(Boolean);
