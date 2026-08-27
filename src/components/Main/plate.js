@@ -1,10 +1,6 @@
-function Plate({ plates }) {
-  return (
-    <>
-      {plates.map((plate) => (
-        <div>{plate}</div>
-      ))}
-    </>
-  );
+import { Tile } from "./styled";
+
+function Plate({ plate }) {
+  return <Tile>{plate}</Tile>;
 }
 export default Plate;
